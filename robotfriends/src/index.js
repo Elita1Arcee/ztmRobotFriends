@@ -4,7 +4,6 @@ import './index.css';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
-import {robots} from './robots';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +12,6 @@ root.render(
       {/* accepting a robots array as a prop */}
       <App/>
     </div>
-    
   </React.StrictMode>
 );
 

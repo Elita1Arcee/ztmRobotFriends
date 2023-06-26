@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Robotlist from "../components/Robotlist";
 import Searchbox from "../components/Searchbox";
 import './App.css';
+import ErrorBoundary from '../components/ErrorBoundary';
 import Scroll from "../components/Scroll";
 
 class App extends Component {
@@ -29,8 +30,8 @@ class App extends Component {
 
 
    render() {
-    const filteredRoboFriends = this.state.robots.filter(robots =>{
-        return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase())
+    const filteredRoboFriends = this.state.robots.filter(robot =>{
+        return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase())
     })
      return (
         <div className='tc'>
@@ -39,7 +40,9 @@ class App extends Component {
                 <Searchbox searchChange={this.onSearchChange}/>
 
             <Scroll>
-                <Robotlist robots = {filteredRoboFriends}/>
+                <ErrorBoundary>
+                    <Robotlist robots = {filteredRoboFriends}/>
+                </ErrorBoundary>
             </Scroll>
             
         </div>
